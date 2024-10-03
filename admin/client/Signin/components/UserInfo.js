@@ -1,0 +1,37 @@
+import React, { PropTypes } from 'react';
+import { Button } from '../../App/elemental';
+
+// TODO Figure out if we should change "Capstone" to "Admin area"
+
+const UserInfo = ({
+	adminPath,
+	signoutPath,
+	usercanAccessCapstone,
+	userName,
+}) => {
+	const adminButton = usercanAccessCapstone ? (
+		<Button href={adminPath} color="primary">
+			Open Capstone
+		</Button>
+	) : null;
+
+	return (
+		<div className="auth-box__col">
+			<p>Hi {userName},</p>
+			<p>You're already signed in.</p>
+			{adminButton}
+			<Button href={signoutPath} variant="link" color="cancel">
+				Sign Out
+			</Button>
+		</div>
+	);
+};
+
+UserInfo.propTypes = {
+	adminPath: PropTypes.string.isRequired,
+	signoutPath: PropTypes.string.isRequired,
+	usercanAccessCapstone: PropTypes.bool,
+	userName: PropTypes.string.isRequired,
+};
+
+module.exports = UserInfo;

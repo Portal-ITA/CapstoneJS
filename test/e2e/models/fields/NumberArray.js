@@ -1,0 +1,31 @@
+var capstone = require('../../../../index.js');
+var Types = capstone.Field.Types;
+
+var NumberArray = new capstone.List('NumberArray', {
+	autokey: {
+		path: 'key',
+		from: 'name',
+		unique: true,
+	},
+	track: true,
+});
+
+NumberArray.add({
+	name: {
+		type: String,
+		initial: true,
+		required: true,
+		index: true,
+	},
+	fieldA: {
+		type: Types.NumberArray,
+	},
+	fieldB: {
+		type: Types.NumberArray,
+	},
+});
+
+NumberArray.defaultColumns = 'name, fieldA, fieldB';
+NumberArray.register();
+
+module.exports = NumberArray;

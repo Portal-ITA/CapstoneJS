@@ -1,0 +1,25 @@
+module.exports = function (capstone, app) {
+	var portString;
+	function sslRedirect (req, res, next) {
+		if (req.secure) {
+			next();
+		} else {
+			// Don't redirect connections from localhost
+			if (req.ip === '127.0.0.1') {
+				return next();
+			} else {
+				res.redirect(302, 'https://' + req.hostname + portString + req.originalUrl);
+			}
+		}
+	};
+
+	if (capstone.get('ssl') === 'force') {
+		var port = capstone.get('ssl public port') || capstone.get('ssl port');
+		if (Number(port) === 443) {
+			portString = '';
+		} else {
+			portString = ':' + port;
+		}
+		app.use(sslRedirect);
+	}
+};
