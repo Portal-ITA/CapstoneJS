@@ -8,7 +8,7 @@
 
 ## About Capstone
 
-CapstoneJS is a fork from the discontinued project [CapstoneJS](http://v4.keystonejs.com), a powerful Node.js content management system and web app framework built on the [Express](https://expressjs.com/) web framework and [Mongoose ODM](http://mongoosejs.com). When we started the new Portal project for [ITA](https://wwwt.ita.br), we adopted Keystone because it's a easy to use tool to create sophisticated web sites and apps, and comes with a beautiful auto-generated Admin UI. But unfortunally KeystoneJS version 4 was deprecated and a new and incompatible version developed.
+CapstoneJS is a fork from the discontinued project [KeystoneJS](http://v4.keystonejs.com), a powerful Node.js content management system and web app framework built on the [Express](https://expressjs.com/) web framework and [Mongoose ODM](http://mongoosejs.com). When we started the new Portal project for [ITA](https://wwwt.ita.br), we adopted Keystone because it's a easy to use tool to create sophisticated web sites and apps, and comes with a beautiful auto-generated Admin UI. But unfortunally KeystoneJS version 4 was deprecated and a new and incompatible version developed.
 
 
 ### Documentation
