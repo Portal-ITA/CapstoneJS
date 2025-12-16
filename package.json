@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/jm4rc05/capstonejs"
+    "url": "https://Portal-ITA/CapstoneJS"
   },
   "dependencies": {
     "@babel/core": "^7.13.8",
