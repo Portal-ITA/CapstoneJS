@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var mongoUri = 'mongodb://172.17.1.30:27017/test';
 
 function dropTestDatabase(done) {
-	mongoose.connect(mongoUri, { useMongoClient: true }, function (err) {
+	mongoose.connect(mongoUri, { }, function (err) {
 		if (!err) {
 			mongoose.connection.db.dropDatabase(function (err) {
 				mongoose.connection.close(function (err) {
