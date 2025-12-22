@@ -62,8 +62,6 @@ var Capstone = function () {
 	this.set('cookie signin', (this.get('env') === 'development') ? true : false);
 
 	this.set('embedly api key', process.env.EMBEDLY_API_KEY || process.env.EMBEDLY_APIKEY);
-	this.set('mandrill api key', process.env.MANDRILL_API_KEY || process.env.MANDRILL_APIKEY);
-	this.set('mandrill username', process.env.MANDRILL_USERNAME);
 	this.set('google api key', process.env.GOOGLE_BROWSER_KEY);
 	this.set('google server api key', process.env.GOOGLE_SERVER_KEY);
 	this.set('ga property', process.env.GA_PROPERTY);

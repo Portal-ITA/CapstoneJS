@@ -99,7 +99,7 @@ export default class ValueProps extends Component {
 						<Col>
 							<ValueProp
 								title="Email Sending"
-								text="Capstone makes it easy to set up, preview and send template-based emails for your application. It also integrates with Mandrill (Mailchimp's excellent transaction email sending service)"
+								text="Capstone makes it easy to set up, preview and send template-based emails for your application."
 								icon={<EntypoPaperPlane style={styles.icon} />}
 							/>
 						</Col>
