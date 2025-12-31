@@ -106,7 +106,7 @@
     "tinymce": "^4.9.11",
     "validator": "^13.5.2",
     "vkey": "^1.0.1",
-    "watchify": "^3.11.1",
+    "watchify": "^4.0.0",
     "xhr": "^2.5.0"
   },
   "browserify": {
