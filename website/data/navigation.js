@@ -189,9 +189,6 @@ export const api = {
 				label: 'Underscore Methods',
 				slug: '/underscore-methods',
 			}, {
-				label: 'AzureFile',
-				slug: '/azurefile',
-			}, {
 				label: 'Embedly',
 				slug: '/embedly',
 			}, {
