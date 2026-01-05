@@ -201,9 +201,6 @@ export const api = {
 				label: 'LocalFiles',
 				slug: '/localfiles',
 			}, {
-				label: 'S3 File',
-				slug: '/s-3-file',
-			}, {
 				label: 'Boolean',
 				slug: '/boolean',
 			}, {

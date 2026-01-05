@@ -74,15 +74,12 @@ module.exports = function createDynamicRouter (capstone) {
 	// #3: Home route
 	router.get('/', IndexRoute);
 
-	// #4: Cloudinary and S3 specific APIs
+	// #4: Cloudinary specific APIs
 	// TODO: poor separation of concerns; should / could this happen elsewhere?
 	if (capstone.get('cloudinary config')) {
 		router.get('/api/cloudinary/get', require('../api/cloudinary').get);
 		router.get('/api/cloudinary/autocomplete', require('../api/cloudinary').autocomplete);
 		router.post('/api/cloudinary/upload', require('../api/cloudinary').upload);
-	}
-	if (capstone.get('s3 config')) {
-		router.post('/api/s3/upload', require('../api/s3').upload);
 	}
 
 	// #5: Core Lists API

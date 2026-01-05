@@ -46,7 +46,6 @@ module.exports = function IndexRoute (req, res) {
 		wysiwyg: { options: {
 			enableImages: capstone.get('wysiwyg images') ? true : false,
 			enableCloudinaryUploads: capstone.get('wysiwyg cloudinary images') ? true : false,
-			enableS3Uploads: capstone.get('wysiwyg s3 images') ? true : false,
 			additionalButtons: capstone.get('wysiwyg additional buttons') || '',
 			additionalPlugins: capstone.get('wysiwyg additional plugins') || '',
 			additionalOptions: capstone.get('wysiwyg additional options') || {},

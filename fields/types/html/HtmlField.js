@@ -135,7 +135,7 @@ module.exports = Field.create({
 			toolbar += ' | image';
 		}
 
-		if (options.enableCloudinaryUploads || options.enableS3Uploads) {
+		if (options.enableCloudinaryUploads) {
 			plugins.push('uploadimage');
 			toolbar += options.enableImages ? ' uploadimage' : ' | uploadimage';
 		}
@@ -177,7 +177,7 @@ module.exports = Field.create({
 		};
 
 		if (this.shouldRenderField()) {
-			opts.uploadimage_form_url = options.enableS3Uploads ? Capstone.adminPath + '/api/s3/upload' : Capstone.adminPath + '/api/cloudinary/upload';
+			opts.uploadimage_form_url = Capstone.adminPath + '/api/cloudinary/upload';
 		} else {
 			Object.assign(opts, {
 				mode: 'textareas',
