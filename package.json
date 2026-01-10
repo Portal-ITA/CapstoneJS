@@ -38,8 +38,6 @@
     "capstone-tinymce": "^0.0.2",
     "chalk": "^2.4.2",
     "classnames": "^2.2.6",
-    "cloudinary": "^1.23.0",
-    "cloudinary-microurl": "^1.4.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",

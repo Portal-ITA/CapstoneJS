@@ -135,11 +135,6 @@ module.exports = Field.create({
 			toolbar += ' | image';
 		}
 
-		if (options.enableCloudinaryUploads) {
-			plugins.push('uploadimage');
-			toolbar += options.enableImages ? ' uploadimage' : ' | uploadimage';
-		}
-
 		if (options.additionalButtons) {
 			var additionalButtons = options.additionalButtons.split(',');
 			for (i = 0; i < additionalButtons.length; i++) {
@@ -176,9 +171,9 @@ module.exports = Field.create({
 			branding: false,
 		};
 
-		if (this.shouldRenderField()) {
-			opts.uploadimage_form_url = Capstone.adminPath + '/api/cloudinary/upload';
-		} else {
+		// if (this.shouldRenderField()) {
+		// 	opts.uploadimage_form_url = Capstone.adminPath + '/api/cloudinary/upload';
+		// } else {
 			Object.assign(opts, {
 				mode: 'textareas',
 				readonly: true,
@@ -186,7 +181,7 @@ module.exports = Field.create({
 				toolbar: 'code',
 				statusbar: false,
 			});
-		}
+		// }
 
 		if (options.additionalOptions) {
 			Object.assign(opts, options.additionalOptions);

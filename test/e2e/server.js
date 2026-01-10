@@ -91,8 +91,6 @@ function runCapstone(cb) {
 		'user model': 'User',
 		'cookie secret': 'Secret',
 		'adminui custom styles': 'adminuiCustom/styles.less',
-
-		'cloudinary config': 'cloudinary://api_key:api_secret@cloud_name',
 	});
 
 // import app models
@@ -108,8 +106,6 @@ function runCapstone(cb) {
 		],
 		'fields': [
 			'booleans',
-			'cloudinary-images',
-			'cloudinary-image-multiples',
 			'codes',
 			'colors',
 			'dates',

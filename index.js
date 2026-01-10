@@ -70,11 +70,6 @@ var Capstone = function () {
 	this.set('chartbeat domain', process.env.CHARTBEAT_DOMAIN);
 	this.set('allowed ip ranges', process.env.ALLOWED_IP_RANGES);
 
-	if (process.env.CLOUDINARY_URL) {
-		// process.env.CLOUDINARY_URL is processed by the cloudinary package when this is set
-		this.set('cloudinary config', true);
-	}
-
 	// init mongoose
 	this.set('mongoose', require('mongoose'));
 	this.mongoose.Promise = require('es6-promise').Promise;

@@ -204,12 +204,6 @@ export const api = {
 				label: 'Boolean',
 				slug: '/boolean',
 			}, {
-				label: 'CloudinaryImage',
-				slug: '/cloudinaryimage',
-			}, {
-				label: 'CloudinaryImages',
-				slug: '/cloudinaryimages',
-			}, {
 				label: 'Code',
 				slug: '/code',
 			}, {

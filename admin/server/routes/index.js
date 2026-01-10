@@ -45,7 +45,6 @@ module.exports = function IndexRoute (req, res) {
         languageList: capstone.get('supported languages'),
 		wysiwyg: { options: {
 			enableImages: capstone.get('wysiwyg images') ? true : false,
-			enableCloudinaryUploads: capstone.get('wysiwyg cloudinary images') ? true : false,
 			additionalButtons: capstone.get('wysiwyg additional buttons') || '',
 			additionalPlugins: capstone.get('wysiwyg additional plugins') || '',
 			additionalOptions: capstone.get('wysiwyg additional options') || {},
@@ -63,7 +62,6 @@ module.exports = function IndexRoute (req, res) {
 
 	var locals = {
 		adminPath: capstoneData.adminPath,
-		cloudinaryScript: false,
 		codemirrorPath: codemirrorPath,
 		env: capstone.get('env'),
 		fieldTypes: capstone.fieldTypes,
@@ -73,19 +71,6 @@ module.exports = function IndexRoute (req, res) {
 		},
 		capstone: capstoneData,
 		title: capstone.get('name') || 'Capstone',
-	};
-
-	var cloudinaryConfig = capstone.get('cloudinary config');
-	if (cloudinaryConfig) {
-		var cloudinary = require('cloudinary');
-		var cloudinaryUpload = cloudinary.uploader.direct_upload();
-		capstoneData.cloudinary = {
-			cloud_name: capstone.get('cloudinary config').cloud_name,
-			api_key: capstone.get('cloudinary config').api_key,
-			timestamp: cloudinaryUpload.hidden_fields.timestamp,
-			signature: cloudinaryUpload.hidden_fields.signature,
-		};
-		locals.cloudinaryScript = cloudinary.cloudinary_js_config();
 	};
 
 	ejs.renderFile(templatePath, locals, { delimiter: '%' }, function (err, str) {

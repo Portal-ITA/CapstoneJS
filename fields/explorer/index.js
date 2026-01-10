@@ -7,8 +7,6 @@ const Types = {
 	Boolean: require('../types/boolean/test/explorer'),
 	Code: require('../types/code/test/explorer'),
 	Color: require('../types/color/test/explorer'),
-	CloudinaryImage: require('../types/cloudinaryimage/test/explorer'),
-	CloudinaryImages: require('../types/cloudinaryimages/test/explorer'),
 	Date: require('../types/date/test/explorer'),
 	DateArray: require('../types/datearray/test/explorer'),
 	Datetime: require('../types/datetime/test/explorer'),

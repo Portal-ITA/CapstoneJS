@@ -48,14 +48,6 @@ module.exports = {
 		browser.adminUIApp.clickPrimaryNavbar({ section: 'Fields' });
 		browser.adminUIApp.assertSecondaryNavbarListVisible({ list: 'Boolean' });
 	},
-	'AdminUI app should have a CloudinaryImage list in the secondary navbar under the Fields section in the primary navbar': function (browser) {
-		browser.adminUIApp.clickPrimaryNavbar({ section: 'Fields' });
-		browser.adminUIApp.assertSecondaryNavbarListVisible({ list: 'CloudinaryImage' });
-	},
-	'AdminUI app should have a CloudinaryImageMultiple list in the secondary navbar under the Fields section in the primary navbar': function (browser) {
-		browser.adminUIApp.clickPrimaryNavbar({ section: 'Fields' });
-		browser.adminUIApp.assertSecondaryNavbarListVisible({ list: 'CloudinaryImageMultiple' });
-	},
 	'AdminUI app should have a Code list in the secondary navbar under the Fields section in the primary navbar': function (browser) {
 		browser.adminUIApp.clickPrimaryNavbar({ section: 'Fields' });
 		browser.adminUIApp.assertSecondaryNavbarListVisible({ list: 'Code' });
