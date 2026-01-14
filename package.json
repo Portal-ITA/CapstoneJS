@@ -100,7 +100,7 @@
     "semver": "^6.0.0",
     "serve-favicon": "^2.5.0",
     "string-to-stream": "^1.1.1",
-    "tinymce": "^4.9.11",
+    "tinymce": "^8.0.0",
     "validator": "^13.5.2",
     "vkey": "^1.0.1",
     "watchify": "^4.0.0",
