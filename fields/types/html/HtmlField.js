@@ -170,14 +170,15 @@ module.exports = Field.create({
 			skin: options.skin || 'capstone',
 			branding: false,
 		};
-		
-		Object.assign(opts, {
-			mode: 'textareas',
-			readonly: true,
-			menubar: false,
-			toolbar: 'code',
-			statusbar: false,
-		});
+		if (!this.shouldRenderField()) {
+			Object.assign(opts, {
+				mode: 'textareas',
+				readonly: true,
+				menubar: false,
+				toolbar: 'code',
+				statusbar: false,
+			});
+		}
 
 		if (options.additionalOptions) {
 			Object.assign(opts, options.additionalOptions);
