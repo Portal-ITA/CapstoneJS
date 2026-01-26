@@ -6,7 +6,7 @@ function signin (req, res) {
     var capstone = req.capstone;
 
     var seclog = capstone.get('seclog');
-    
+
 	if (!capstone.security.csrf.validate(req)) {
 		return res.apiError(403, 'invalid csrf');
 	}
@@ -14,7 +14,7 @@ function signin (req, res) {
 		return res.status(401).json({ error: 'email and password required' });
 	}
     var User = capstone.list(capstone.get('user model'));
-	var emailRegExp = new RegExp('^' + utils.escapeRegExp(req.body.email) + '$', 'i');
+	var emailRegExp = new RegExp('^' + utils.escapeRegExp(String(req.body.email) || '') + '$', 'i');
 	User.model.findOne({ email: emailRegExp }).exec(function (err, user) {
 		if (user) {
             var ldapServer = capstone.get('ldap server');
@@ -81,10 +81,10 @@ function signin (req, res) {
                     }
                 });
             }
-        } 
+        }
         else if (err) {
 			return res.status(500).json({ error: 'database error', detail: err });
-        } 
+        }
         else {
 			return res.status(401).json({ error: 'invalid details' });
 		}
