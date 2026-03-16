@@ -1,5 +1,54 @@
+
+async function translate (text, translator, target = 'en', source = 'pt', format = 'html') {
+		try {
+				const response = await fetch(translator, {
+						method: 'POST',
+						body: JSON.stringify({
+								q: text,
+								source: source,
+								target: target,
+								format: format,
+								api_key: ""
+						}),
+						headers: { 'Content-Type': 'application/json' }
+				});
+				if (!response.ok) {
+						const errorBody = await response.text();
+						console.error(`Erro na API (${response.status}):`, errorBody);
+						return null;
+				}
+				const data = await response.json();
+				return data.translatedText;
+		}
+		catch (e) {
+				console.error("Falha na conexão com LibreTranslate:", e);
+				return null;
+		}
+}
+
+async function preTranslation(result, translator) {
+		if (!result) return
+		if (!translator) return
+
+		for (const pathName of Object.keys(result.schema.paths)) {
+				if (pathName.endsWith('.pt')) {
+						const originalText = result.get(pathName)
+						const translationPath = pathName.slice(0, -3) + ".en"
+						var translatedText = result.get(translationPath)
+						if (originalText && !translatedText) {
+								fieldType = 'html'
+								translatedText = await translate(originalText, translator)
+								console.log(originalText, ' -> ',translatedText)
+								result.set(translationPath, translatedText)
+						}
+				}
+		}
+
+		return result
+}
+
 module.exports = function (req, res) {
-    
+
     var capstone = req.capstone;
     if (!capstone.security.csrf.validate(req)) {
         return res.apiError(403, 'invalid csrf');
@@ -20,7 +69,9 @@ module.exports = function (req, res) {
                 // application specific logic from messing with the values in the item
                 req.list.model.findById(req.params.id).then((updatedItem, err) => {
                     updatedItem.setLanguage(capstone.session.getLanguage(req));
-                    res.status(200).json(req.list.getData(updatedItem));
+										preTranslation(updatedItem, capstone.get('translator')).then((translated) => {
+	                    res.status(200).json(req.list.getData(translated));
+										})
                 });
             });
         });
