@@ -1,3 +1,9 @@
+function fixTarget(target) {
+	if (target === 'pt')
+		return 'pb'
+	else
+		return target
+}
 
 async function translate (text, translator, target = 'en', source = 'pt', format = 'html') {
 		try {
@@ -6,7 +12,7 @@ async function translate (text, translator, target = 'en', source = 'pt', format
 						body: JSON.stringify({
 								q: text,
 								source: source,
-								target: target,
+								target: fixTarget(target),
 								format: format,
 								api_key: ""
 						}),
