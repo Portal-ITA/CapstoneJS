@@ -1,8 +1,8 @@
-function fixTarget(target) {
-	if (target === 'pt')
+function fixSource(source) {
+	if (source === 'pt')
 		return 'pb'
 	else
-		return target
+		return source
 }
 
 async function translate (text, translator, target = 'en', source = 'pt', format = 'html') {
@@ -11,8 +11,8 @@ async function translate (text, translator, target = 'en', source = 'pt', format
 						method: 'POST',
 						body: JSON.stringify({
 								q: text,
-								source: source,
-								target: fixTarget(target),
+								source: fixSource(source),
+								target: target,
 								format: format,
 								api_key: ""
 						}),
@@ -44,7 +44,6 @@ async function preTranslation(result, translator) {
 						if (originalText && !translatedText) {
 								fieldType = 'html'
 								translatedText = await translate(originalText, translator)
-								console.log(originalText, ' -> ',translatedText)
 								result.set(translationPath, translatedText)
 						}
 				}
