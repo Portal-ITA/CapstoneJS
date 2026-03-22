@@ -64,21 +64,20 @@ module.exports = function (req, res) {
             if (err) return res.status(401).json({ error: err.error, detail: err.detail });
             if (!item) return res.status(404).json({ error: 'not found', id: req.params.id });
             item.setLanguage(capstone.session.getLanguage(req));
-            req.list.updateItem(item, req.body, { files: req.files, user: req.user }, function (err) {
-                if (err) {
-                    var status = err.error === 'validation errors' ? 400 : 500;
-                    var error = err.error === 'database error' ? err.detail : err;
-                    res.apiError(status, error);
-                }
-                // Reload the item from the database to prevent save hooks or other
-                // application specific logic from messing with the values in the item
-                req.list.model.findById(req.params.id).then((updatedItem, err) => {
-                    updatedItem.setLanguage(capstone.session.getLanguage(req));
-										preTranslation(updatedItem, capstone.get('translator')).then((translated) => {
-	                    res.status(200).json(req.list.getData(translated));
-										})
-                });
-            });
+						preTranslation(item, capstone.get('translator')).then((item) => {
+							req.list.updateItem(item, req.body, { files: req.files, user: req.user }, function (err) {
+									if (err) {
+											var status = err.error === 'validation errors' ? 400 : 500;
+											var error = err.error === 'database error' ? err.detail : err;
+											res.apiError(status, error);
+									}
+									// Reload the item from the database to prevent save hooks or other
+									// application specific logic from messing with the values in the item
+									req.list.model.findById(req.params.id).then((item, err) => {
+											res.status(200).json(req.list.getData(item));
+									});
+							});
+						})
         });
     }
     catch(e) {
