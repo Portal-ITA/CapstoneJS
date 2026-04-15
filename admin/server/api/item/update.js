@@ -34,7 +34,7 @@ async function translate (text, translator, target = 'en', source = 'pt', format
 
 async function preTranslation(result, translator) {
 		if (!result) return
-		if (!translator) return
+		if (!translator) return result
 
 		for (const pathName of Object.keys(result.schema.paths)) {
 				if (pathName.endsWith('.pt')) {
